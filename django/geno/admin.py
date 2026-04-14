@@ -335,7 +335,7 @@ def member_send_membermail(modeladmin, request, queryset):
 
 class MemberAttributeTabularInline(TabularInline):
     model = MemberAttribute
-    fields = ["date", "value", "attribute_type", "comment"]
+    fields = ["date", "attribute_type", "value", "file", "comment"]
     tab = True
 
 
@@ -347,6 +347,7 @@ class MemberAdmin(GenoBaseAdmin):
             None,
             {
                 "fields": (
+                    "member_id",
                     "name",
                     "date_join",
                     "date_leave",
@@ -364,8 +365,10 @@ class MemberAdmin(GenoBaseAdmin):
         ("Verknüpfungen", {"fields": ("links", "backlinks"), "classes": ["tab"]}),
         ("Aktionen", {"fields": ("object_actions",), "classes": ["tab"]}),
     )
-    readonly_fields = ["ts_created", "ts_modified", "object_actions", "links", "backlinks"]
-    list_display = ["name", "date_join", "date_leave"]
+    readonly_fields = [
+        "member_id", "ts_created", "ts_modified", "object_actions", "links", "backlinks",
+    ]
+    list_display = ["member_id", "name", "date_join", "date_leave"]
     list_filter = [
         "flag_01",
         "flag_02",
@@ -464,8 +467,8 @@ class TenantAdmin(GenoBaseAdmin):
 @admin.register(MemberAttributeType)
 class MemberAttributeTypeAdmin(GenoBaseAdmin):
     model = MemberAttributeType
-    fields = ["name", "description"]
-    list_display = ["name", "description"]
+    fields = ["name", "description", "kind"]
+    list_display = ["name", "description", "kind"]
     search_fields = ["name", "description"]
 
 
@@ -511,13 +514,14 @@ class MemberAttributeAdmin(GenoBaseAdmin):
         "attribute_type",
         "date",
         "value",
+        "file",
         "comment",
         ("ts_created", "ts_modified"),
         "links",
         "backlinks",
     ]
     readonly_fields = ["ts_created", "ts_modified", "links", "backlinks"]
-    list_display = ["member", "attribute_type", "date", "value"]
+    list_display = ["member", "attribute_type", "date", "value", "file"]
     list_filter = [
         "attribute_type",
         "value",

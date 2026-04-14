@@ -769,6 +769,13 @@ class Tenant(GenoBase):
 
 
 class Member(GenoBase):
+    member_id = models.CharField(
+        "Mitglied-Nr.",
+        max_length=20,
+        unique=True,
+        blank=True,
+        help_text="Wird automatisch vergeben (z.B. M-00001).",
+    )
     name = models.OneToOneField(
         Address, verbose_name="Person/Organisation", on_delete=models.CASCADE
     )
@@ -784,6 +791,23 @@ class Member(GenoBase):
 
     ## Reverse relation to Documents
     documents = GenericRelation("Document", related_query_name="members")
+
+    def _generate_member_id(self):
+        from django.db.models import Max
+        from django.db.models.functions import Cast, Substr
+
+        last = (
+            Member.objects.filter(member_id__startswith="M-")
+            .annotate(numeric=Cast(Substr("member_id", 3), models.IntegerField()))
+            .aggregate(max_num=Max("numeric"))
+        )
+        next_num = (last["max_num"] or 0) + 1
+        return f"M-{next_num:05d}"
+
+    def save(self, *args, **kwargs):
+        if not self.member_id:
+            self.member_id = self._generate_member_id()
+        super().save(*args, **kwargs)
 
     def __str__(self):
         if self.name:
@@ -834,13 +858,23 @@ Member._meta.get_field("flag_05").verbose_name = geno_settings.MEMBER_FLAGS[5]
 
 
 class MemberAttributeType(GenoBase):
+    KIND_CHOICES = (
+        ("text", "Text"),
+        ("file", "Datei (Foto/Video/Dokument)"),
+    )
     name = models.CharField("Name", max_length=50, unique=True)
     description = models.CharField("Beschreibung", max_length=200)
+    kind = models.CharField(
+        "Feldtyp", max_length=10, choices=KIND_CHOICES, default="text"
+    )
 
     class Meta:
         verbose_name = "Mitglieder Attribut Typ"
         verbose_name_plural = "Mitglieder Attribut Typen"
 
+def member_attribute_upload_to(instance, filename):
+    safe_name = sanitize_filename(filename)
+    return f"member_attributes/{instance.member_id}/{safe_name}"
 
 class MemberAttribute(GenoBase):
     member = models.ForeignKey(Member, verbose_name="Mitglied", on_delete=models.CASCADE)
@@ -848,13 +882,27 @@ class MemberAttribute(GenoBase):
         MemberAttributeType, verbose_name="Attributtyp", on_delete=models.CASCADE
     )
     date = models.DateField("Datum", null=True, blank=True)
-    value = models.CharField("Wert", max_length=100)
+    value = models.CharField("Wert", max_length=100, blank=True)
+    file = models.FileField(
+        "Datei",
+        upload_to=member_attribute_upload_to,
+        blank=True,
+        help_text="Foto, Video oder Dokument hochladen (für KYC/Identifikation).",
+    )
+
+    def clean(self):
+        if self.attribute_type_id:
+            if self.attribute_type.kind == "text" and not self.value:
+                raise ValidationError({"value": "Dieses Feld ist erforderlich für Textattribute."})
+            if self.attribute_type.kind == "file" and not self.file:
+                raise ValidationError({"file": "Bitte eine Datei hochladen."})
 
     def __str__(self):
         date_str = ""
         if self.date:
             date_str = " (%s)" % self.date.strftime("%d.%m.%Y")
-        return "%s [%s - %s]%s" % (self.member, self.attribute_type, self.value, date_str)
+        display_val = self.value or (self.file.name if self.file else "")
+        return "%s [%s - %s]%s" % (self.member, self.attribute_type, display_val, date_str)
 
     class Meta:
         verbose_name = "Mitglieder Attribut"
