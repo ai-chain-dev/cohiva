@@ -112,7 +112,7 @@ INSERT INTO `accounts` (`guid`, `name`, `account_type`, `commodity_guid`, `commo
 ('4fc09c6ecb3b4002afd9128802c663ea',	'Übriger betrieblicher Aufwand',	'EXPENSE',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'1bb5fda7bfa54f9ca5ea8357ed89ff30',	'67',	'',	0,	1),
 ('51bb864548f74c38a2a456617a4781ce',	'Reinigungen',	'ASSET',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'107696a13cd84cac86e16635ff5118dd',	'1311.05',	'Reinigungen, die nicht von Hauswart ausgeführt werden',	0,	0),
 ('54eb98248691417abc193c0d25a83d4f',	'Zinsaufwand Hypotheken Musterweg 1',	'EXPENSE',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'1a8cc530c8a74440936362a45fa87b91',	'478',	'',	0,	0),
-('550b60ba286c446a93faaf5adba5670f',	'Ausgleichskonto-CHF',	'BANK',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'7585e653086842729f11ff5409483caa',	'',	'',	0,	0),
+('550b60ba286c446a93faaf5adba5670f',	'Ausgleichskonto-RON',	'BANK',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'7585e653086842729f11ff5409483caa',	'',	'',	0,	0),
 ('564ef89256a44a86bb51028740bff0d1',	'Verbindlichkeiten aus Verrechnungssteuer',	'LIABILITY',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'0862b4b8cf26470bad04c7bd0b981426',	'2010',	'',	0,	0),
 ('5658db67fd6d4e94ba0ae0e0bd5913f4',	'Jahreserfolg',	'EXPENSE',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'7585e653086842729f11ff5409483caa',	'9999',	'',	0,	0),
 ('5673aff78eca4e5694a7a7127a7dbd33',	'Rückstellungen Einrichtungen',	'LIABILITY',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'5aabe07fb3094c3fa9d97520166f38d6',	'2600',	'',	0,	0),
@@ -157,7 +157,7 @@ INSERT INTO `accounts` (`guid`, `name`, `account_type`, `commodity_guid`, `commo
 ('83acff93e53e4acfb330bca83aa6e139',	'Passive Rechnungsabgrenzung',	'LIABILITY',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'9eb107911eec4e9f9c77f49b71f550d8',	'230',	'Verbindlichkeiten noch keine Rechnung (geschätzt) / Erträge im laufenden Jahr die für das Folgejahr bestimmt sind',	0,	1),
 ('8534288912fb4aa38f90b921919dfdc7',	'Geleistete Anzahlungen',	'ASSET',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'5ce5acae00bc472a87f65771564836da',	'120',	'',	0,	0),
 ('854458b9e56e4a1a95213d15bfd763c7',	'Winterdienst',	'ASSET',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'107696a13cd84cac86e16635ff5118dd',	'1311.06',	'',	0,	0),
-('856b39aef74b47a6a95ab903bb655662',	'Ausbuchungskonto-CHF',	'BANK',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'7585e653086842729f11ff5409483caa',	'',	'',	0,	0),
+('856b39aef74b47a6a95ab903bb655662',	'Ausbuchungskonto-RON',	'BANK',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'7585e653086842729f11ff5409483caa',	'',	'',	0,	0),
 ('873fd260ea764760b958e35539f7477f',	'Mobilien',	'EXPENSE',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'6f99c47958ac4d0cb890657e25ecbb37',	'6840',	'',	0,	0),
 ('8854f1dbdab44445b0b49b7fdd431015',	'Genossenschaftsanteile Mitglieder',	'LIABILITY',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'70acdded56f54795b05e01de266ae259',	'2800',	'',	0,	0),
 ('886f6f7ea8944c7784330f96235ca772',	'Lüftung (Reinigung/Kontrolle)',	'ASSET',	'c97c72009e5a4a38b3ede56f8a80ef1a',	100,	0,	'4154520809e34c409e6cec36286640ae',	'1311.11.08',	'',	0,	0),
@@ -316,7 +316,7 @@ CREATE TABLE `commodities` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `commodities` (`guid`, `namespace`, `mnemonic`, `fullname`, `cusip`, `fraction`, `quote_flag`, `quote_source`, `quote_tz`) VALUES
-('c97c72009e5a4a38b3ede56f8a80ef1a',	'CURRENCY',	'CHF',	'Schweizer Franken',	'756',	100,	1,	'currency',	'');
+('c97c72009e5a4a38b3ede56f8a80ef1a',	'CURRENCY',	'RON',	'Schweizer Franken',	'756',	100,	1,	'currency',	'');
 
 DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (

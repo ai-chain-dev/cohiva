@@ -168,7 +168,7 @@ def read_camt_entry(data, entry):
                 "objects": [],
             }
         )
-    if entry_currency != "CHF":
+    if entry_currency != "RON":
         raise SepaReaderException("Unknown entry currency: %s" % entry_currency)
     entry_log_info = "Entry: ref = %s, amount = %s %s, date = %s" % (
         entry_ref,

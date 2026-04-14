@@ -1147,9 +1147,9 @@ class TransactionUploadProcessForm(forms.Form):
 
         choices = [("IGNORE", "Nicht speichern")]
         if transaction:
-            combo_amount = "%s__CHF%s" % (transaction["person"], transaction["amount"])
+            combo_amount = "%s__RON%s" % (transaction["person"], transaction["amount"])
             combo_note = "%s__N:%s" % (transaction["person"], transaction["note"])
-            combo_amount_note = "%s__CHF%s__N:%s" % (
+            combo_amount_note = "%s__RON%s__N:%s" % (
                 transaction["person"],
                 transaction["amount"],
                 transaction["note"],

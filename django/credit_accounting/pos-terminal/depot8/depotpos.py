@@ -257,7 +257,7 @@ class PosTerminal:
                 f"{self.transaction_id_prefix}_{self.transaction_id_counter}_{random_nr}"
             )
         logging.debug(
-            "Adding transaction %s for user %s CHF %s (Note: %s) [%s]",
+            "Adding transaction %s for user %s RON %s (Note: %s) [%s]",
             name,
             username,
             betrag,

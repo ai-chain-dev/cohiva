@@ -21,14 +21,14 @@
 				<Id>
 					<IBAN>CH2909000000250094239</IBAN>
 				</Id>
-				<Ccy>CHF</Ccy>
+				<Ccy>RON</Ccy>
 				<Ownr>
 					<Nm>Robert Schneider SA</Nm>
 				</Ownr>
 			</Acct>
 			<Ntry>
 				<NtryRef>020010001</NtryRef>
-				<Amt Ccy="CHF">147.00</Amt>
+				<Amt Ccy="RON">147.00</Amt>
 				<CdtDbtInd>DBIT</CdtDbtInd>
 				<RvslInd>false</RvslInd>
 				<Sts>
@@ -51,9 +51,9 @@
 					</Domn>
 				</BkTxCd>
 				<Chrgs>
-					<TtlChrgsAndTaxAmt Ccy="CHF">4.40</TtlChrgsAndTaxAmt>
+					<TtlChrgsAndTaxAmt Ccy="RON">4.40</TtlChrgsAndTaxAmt>
 					<Rcrd>
-						<Amt Ccy="CHF">4.40</Amt>
+						<Amt Ccy="RON">4.40</Amt>
 						<CdtDbtInd>DBIT</CdtDbtInd>
 						<ChrgInclInd>false</ChrgInclInd>
 						<Tp>
@@ -75,7 +75,7 @@
 								<Ref>20190423848301000100105</Ref>
 							</Prtry>
 						</Refs>
-						<Amt Ccy="CHF">147.00</Amt>
+						<Amt Ccy="RON">147.00</Amt>
 						<CdtDbtInd>DBIT</CdtDbtInd>
 						<BkTxCd>
 							<Domn>
@@ -87,9 +87,9 @@
 							</Domn>
 						</BkTxCd>
 						<Chrgs>
-							<TtlChrgsAndTaxAmt Ccy="CHF">4.40</TtlChrgsAndTaxAmt>
+							<TtlChrgsAndTaxAmt Ccy="RON">4.40</TtlChrgsAndTaxAmt>
 							<Rcrd>
-								<Amt Ccy="CHF">4.40</Amt>
+								<Amt Ccy="RON">4.40</Amt>
 								<CdtDbtInd>DBIT</CdtDbtInd>
 								<ChrgInclInd>false</ChrgInclInd>
 								<Tp>

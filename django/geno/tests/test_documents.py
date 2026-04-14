@@ -844,7 +844,7 @@ class DocumentProcessTest(GenoAdminTestCase):
                     "CH-3000 Bern\n"
                 ),
                 f"Zusätzliche Informationen\nQR-Infotext {self.year}",
-                "Betrag\nCHF\n9.95",
+                "Betrag\nRON\n9.95",
             ],
         )
         self.assertEqual(Invoice.objects.count(), 0)
@@ -863,7 +863,7 @@ class DocumentProcessTest(GenoAdminTestCase):
             [
                 "Zahlbar durch\nHans Muster",
                 "Konto / Zahlbar an\nCH56 0483 5012 3456 7800 9",  # Not QR-IBAN
-                "Betrag\nCHF\nAnnahmestelle",  # No amount
+                "Betrag\nRON\nAnnahmestelle",  # No amount
             ],
         )
         self.assertNotInPDF(mail.outbox[0].attachments[0][1], "Zusätzliche Informationen")
@@ -899,7 +899,7 @@ class DocumentProcessTest(GenoAdminTestCase):
                 ),
                 f"Referenz\n77 00000 {invoice.id:05} 00000 {self.addresses[0].id:05} {self.year}",
                 f"Zusätzliche Informationen\nQR-Infotext {self.year}",
-                "Betrag\nCHF\n9.95",
+                "Betrag\nRON\n9.95",
             ],
         )
 
@@ -922,7 +922,7 @@ class DocumentProcessTest(GenoAdminTestCase):
                 "Konto / Zahlbar an\nCH64 3196 1000 0044 2155 7",  # QR-IBAN
                 f"Referenz\n77 99999 99999 00000 {self.addresses[0].id:05} {self.year}",
                 f"Zusätzliche Informationen\nQR-Infotext {self.year}",
-                "Betrag\nCHF\n9.95",
+                "Betrag\nRON\n9.95",
             ],
         )
         self.assertEqual(Invoice.objects.count(), 0)
@@ -954,7 +954,7 @@ class DocumentProcessTest(GenoAdminTestCase):
                 "Konto / Zahlbar an\nCH64 3196 1000 0044 2155 7",  # QR-IBAN
                 f"Referenz\n12 00000 00000 00000 {self.contracts[0].id:05} {self.year}",
                 "Zusätzliche Informationen\n/ Whg. 001a/001b",  # TODO: remove slash?
-                "Betrag\nCHF\nAnnahmestelle",
+                "Betrag\nRON\nAnnahmestelle",
             ],
         )
         self.assertEqual(Invoice.objects.count(), 0)
@@ -980,7 +980,7 @@ class DocumentProcessTest(GenoAdminTestCase):
                 "Konto / Zahlbar an\nCH64 3196 1000 0044 2155 7",  # QR-IBAN
                 f"Referenz\n12 00000 00000 00000 {self.contracts[0].id:05} {self.year}",
                 "Zusätzliche Informationen\n/ Whg. 001a/001b",  # TODO: remove slash?
-                "Betrag\nCHF\nAnnahmestelle",
+                "Betrag\nRON\nAnnahmestelle",
             ],
         )
         self.assertEqual(Invoice.objects.count(), 0)
@@ -1008,7 +1008,7 @@ class DocumentProcessTest(GenoAdminTestCase):
                 "Konto / Zahlbar an\nCH64 3196 1000 0044 2155 7",  # QR-IBAN
                 f"Referenz\n12 00000 {invoice.id:05} 00000 {self.contracts[0].id:05} {self.year}",
                 f"Zusätzliche Informationen\nQR-Infotext {self.year} / Whg. 001a/001b",
-                "Betrag\nCHF\n9.95",
+                "Betrag\nRON\n9.95",
             ],
         )
         self.assertEqual(Invoice.objects.count(), 2)
@@ -1053,7 +1053,7 @@ class DocumentProcessTest(GenoAdminTestCase):
                 "Zahlbar durch\nHans Muster",
                 "Konto / Zahlbar an\nCH56 0483 5012 3456 7800 9",  # Not QR-IBAN
                 f"Zusätzliche Informationen\nQR-Infotext {self.year}",
-                "Betrag\nCHF\n9.95",
+                "Betrag\nRON\n9.95",
             ],
         )
 
@@ -1066,7 +1066,7 @@ class DocumentProcessTest(GenoAdminTestCase):
                 "Zahlbar durch\nHans Muster",
                 "Konto / Zahlbar an\nCH64 3196 1000 0044 2155 7",  # QR-IBAN
                 f"Zusätzliche Informationen\nQR-Infotext {self.year}",
-                "Betrag\nCHF\n9.95",
+                "Betrag\nRON\n9.95",
             ],
         )
 

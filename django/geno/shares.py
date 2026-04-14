@@ -500,7 +500,7 @@ def share_interest_calc(address, year, enddate=None):
                     if interest_rate is not None and interest_rate != i["interest"]:
                         raise IncompatibleInterestRates(
                             f"Inkompatible Zinssätze: {interest_rate} vs. {i['interest']} "
-                            f"von Beteiligung CHF {i['amount']}/{i['start']} [{address}]"
+                            f"von Beteiligung RON {i['amount']}/{i['start']} [{address}]"
                         )
                     interest_rate = i["interest"]
 

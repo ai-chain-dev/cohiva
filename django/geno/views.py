@@ -887,7 +887,7 @@ def share_export(request):
             ("A", "Name", 30),
             ("B", "Typ", 20),
             ("C", "Anzahl", 8),
-            ("D", "Summe CHF", 12),
+            ("D", "Summe RON", 12),
             ("E", "Fälligkeit", 10),
             ("F", "Laufzeit", 8),
             ("G", "Mitgliedschaft", 30),
@@ -900,8 +900,8 @@ def share_export(request):
             ("D", "Typ", 20),
             ("E", "Datum", 12),
             ("F", "Anzahl", 8),
-            ("G", "Betrag CHF", 12),
-            ("H", "Summe CHF", 12),
+            ("G", "Betrag RON", 12),
+            ("H", "Summe RON", 12),
             ("I", "Zinssatz-Modus", 10),
             ("J", "Zinssatz", 10),
             ("K", "Zins?", 8),
@@ -1674,7 +1674,7 @@ class ShareInterestView(CohivaAdminViewMixin, TemplateView):
             ("A", "Name", 30),
             ("B", "Typ", 20),
             ("C", "Datum", 25),
-            ("D", "Saldo CHF", 12),
+            ("D", "Saldo RON", 12),
             ("E", "Tage", 8),
             ("F", "Satz", 8),
             ("G", "Bruttozins", 12),
@@ -1876,7 +1876,7 @@ def share_mailing(request):
                     }
                 )
                 obj.append(
-                    "Darlehen-INFO: CHF %s,  %s  -> %s"
+                    "Darlehen-INFO: RON %s,  %s  -> %s"
                     % (
                         nformat(d.value),
                         duedate.strftime("%d.%m.%Y"),
@@ -3465,7 +3465,7 @@ class TransactionManualView(CohivaAdminViewMixin, FormView):
                 book.add_transaction(
                     amount, from_account, to_account, form.cleaned_data["date"], description
                 )
-                messages.success(self.request, f"Buchung erstellt: CHF {amount}, {description}")
+                messages.success(self.request, f"Buchung erstellt: RON {amount}, {description}")
         except Exception as e:
             messages.error(self.request, "Konnte Buchung nicht erstellen: %s" % e)
             return True
@@ -3510,7 +3510,7 @@ class TransactionManualView(CohivaAdminViewMixin, FormView):
         share.save()
         messages.info(
             self.request,
-            "%sx CHF %s %s hinzugefügt - %s [%s]"
+            "%sx RON %s %s hinzugefügt - %s [%s]"
             % (
                 count,
                 value,
@@ -3538,7 +3538,7 @@ class TransactionManualView(CohivaAdminViewMixin, FormView):
             None,
             note,
         )
-        info = "%s: %s CHF %s [%s]" % (
+        info = "%s: %s RON %s [%s]" % (
             form.cleaned_data["transaction"],
             form.cleaned_data["date"],
             form.cleaned_data["amount"],
@@ -3881,7 +3881,7 @@ class InvoiceManualView(CohivaAdminViewMixin, TemplateView):
                 invoice_lines.append(line)
                 lines_count += 1
                 total_amount += line["amount"]
-                comment.append("%s CHF %s" % (line["text"], line["total"]))
+                comment.append("%s RON %s" % (line["text"], line["total"]))
 
         if not lines_count:
             messages.error(
@@ -3965,7 +3965,7 @@ class InvoiceManualView(CohivaAdminViewMixin, TemplateView):
                 dry_run,
             )
 
-            info = "%s CHF %s Nr. %s/%s, %s" % (
+            info = "%s RON %s Nr. %s/%s, %s" % (
                 address,
                 total_amount,
                 context["invoice_nr"],

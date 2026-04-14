@@ -19,7 +19,7 @@ class Transaction:
     splits: list[Split]
     date: datetime.date | datetime.datetime | str
     description: str = ""
-    currency: str = "CHF"
+    currency: str = "RON"
 
     def __str__(self):
         ret = f"{self.date}"

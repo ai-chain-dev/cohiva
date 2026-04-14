@@ -57,7 +57,7 @@ def process_eigenmittel():
             else:
                 ## Sanitze input
                 for i in [0, 4, 7, 10, 13, 16, 20, 24, 28, 32, 34]:
-                    row[i] = row[i].replace(" CHF", "")
+                    row[i] = row[i].replace(" RON", "")
                     row[i] = row[i].replace("'", "")
                     if row[i] == "":
                         row[i] = 0
@@ -1474,8 +1474,8 @@ def parse_transaction_file_csv(csvfile):
             if row[0:5] == [
                 "Buchungsdatum",
                 "Avisierungstext",
-                "Gutschrift in CHF",
-                "Lastschrift in CHF",
+                "Gutschrift in RON",
+                "Lastschrift in RON",
                 "Valuta",
             ]:
                 filetype = "Postfinance"

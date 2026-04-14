@@ -92,7 +92,7 @@ class CashctrlBookTestCase(TestCase):
                     ],
                     "2026-01-01",
                     "Split or collective transaction test",
-                    "CHF",
+                    "RON",
                 ),
                 True,
             )

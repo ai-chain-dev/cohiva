@@ -35,7 +35,7 @@ class AccountingBook:
         account_credit: Account,
         date: datetime.date | datetime.datetime | str | None = None,
         description: str = "",
-        currency: str = "CHF",
+        currency: str = "RON",
         autosave: bool = True,
     ):
         """Add a transaction with two splits: one for the debit and one for the credit.

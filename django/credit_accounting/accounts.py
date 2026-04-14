@@ -181,7 +181,7 @@ def import_transactions(data, vendor):
             addtl_info.append(tx["debtor"])
         # if tx['charges']:
         #    addtl_info.append("Charges: %s" % tx['charges'])
-        transaction_info_txt = "%s - CHF %s (%s)" % (
+        transaction_info_txt = "%s - RON %s (%s)" % (
             tx["date"],
             tx["amount"],
             "/".join(addtl_info),
@@ -208,7 +208,7 @@ def import_transactions(data, vendor):
             continue
         try:
             bill_info["account"] = Account.objects.get(id=int(bill_info["object_id"]))
-            transaction_info_txt = "%s - CHF %s für Konto %s (%s)" % (
+            transaction_info_txt = "%s - RON %s für Konto %s (%s)" % (
                 tx["date"],
                 tx["amount"],
                 bill_info["account"],

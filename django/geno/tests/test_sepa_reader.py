@@ -20,7 +20,7 @@ class SepaReaderTest(GenoAdminTestCase):
                 "num_transactions": 0,
             },
             {
-                "file": "camt053_CH9100778208005522002_CHF_2024-01-23_2024-01-26.xml",
+                "file": "camt053_CH9100778208005522002_RON_2024-01-23_2024-01-26.xml",
                 "num_transactions": 4,
             },
             {"file": "camt.053_CH5600790016583351934_2025-06-27.xml", "num_transactions": 0},

@@ -272,7 +272,7 @@ class Transaction(GenoBase):
     def update_account_balance(self, created=False, deleted=False):
         if deleted:
             logger.info(
-                "Deleted transaction %s/%s [id %d] %s CHF %s (%s)"
+                "Deleted transaction %s/%s [id %d] %s RON %s (%s)"
                 % (self.name, self.date, self.id, self.account, self.amount, self.description)
             )
             self.account.update_balance(-1 * self.amount)
@@ -280,7 +280,7 @@ class Transaction(GenoBase):
             self.account.update_balance(self.amount)
         elif self.__original_account != self.account:
             logger.info(
-                "Changed transaction %s/%s [id %d] %s CHF %s -> %s CHF %s (%s)"
+                "Changed transaction %s/%s [id %d] %s RON %s -> %s RON %s (%s)"
                 % (
                     self.name,
                     self.date,
@@ -296,7 +296,7 @@ class Transaction(GenoBase):
             self.account.update_balance(self.amount)
         elif self.__original_amount != self.amount:
             logger.info(
-                "Changed transaction %s/%s [id %d] %s CHF %s -> CHF %s (%s)"
+                "Changed transaction %s/%s [id %d] %s RON %s -> RON %s (%s)"
                 % (
                     self.name,
                     self.date,
