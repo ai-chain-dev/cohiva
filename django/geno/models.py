@@ -946,7 +946,7 @@ class Share(GenoBase):
         blank=True,
         help_text="Explizites Fälligkeitsdatum; leer=autom. mit Laufzeit berechnet",
     )
-    quantity = models.PositiveIntegerField("Anzahl", default=1)
+    quantity = models.DecimalField("Anzahl", max_digits=38, decimal_places=18, default=1)
     value = models.DecimalField("Betrag pro Stück", max_digits=10, decimal_places=2)
     INTEREST_MODE_CHOICES = (
         ("Standard", "Standard"),
