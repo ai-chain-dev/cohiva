@@ -1017,12 +1017,12 @@ SILENCED_SYSTEM_CHECKS = [
 
 COHIVA_ADMIN_NAVIGATION = [
     {
-        "name": _("Stammdaten"),
+        "name": _("Master Data"),
         "items": [
             {
                 "type": "model",
                 "value": "geno.Address",
-                "name": _("Adressen/Personen"),
+                "name": _("Addresses/Persons"),
                 "icon": "contact_page",
             },
             {"type": "model", "value": "geno.Child", "icon": "child_care"},
@@ -1049,7 +1049,7 @@ COHIVA_ADMIN_NAVIGATION = [
         ],
     },
     {
-        "name": _("Mitglieder"),
+        "name": _("Members"),
         "items": [
             {
                 "type": "view",
@@ -1063,6 +1063,7 @@ COHIVA_ADMIN_NAVIGATION = [
                     {"type": "model", "value": "geno.Member", "icon": "person_check"},
                     {"type": "model", "value": "geno.MemberAttribute", "icon": "user_attributes"},
                 ],
+                "name": _("Members"),
             },
             {
                 "type": "tabgroup",
@@ -1206,10 +1207,10 @@ COHIVA_ADMIN_NAVIGATION = [
         ],
     },
     {
-        "name": _("Finanzierung"),
+        "name": _("Financing"),
         "items": [
             {"type": "view", "value": "geno:share_overview", "icon": "finance"},
-            {"type": "model", "value": "geno.Share", "icon": "request_page"},
+            {"type": "model", "value": "geno.Share", "name": _("Shares"), "icon": "request_page"},
             {"type": "view", "value": "geno:share-interest", "icon": "percent"},
             {
                 "type": "tabgroup",
