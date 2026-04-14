@@ -637,6 +637,7 @@ class ShareAdmin(GenoBaseAdmin):
         "attached_to_contract",
         "attached_to_building",
         "note",
+        "tx_id",
         ("interest", "interest_mode", "manual_interest"),
         "comment",
         ("ts_created", "ts_modified"),
@@ -662,6 +663,7 @@ class ShareAdmin(GenoBaseAdmin):
         "duration",
         "date_due",
         "quantity",
+        "tx_id",
         "value",
         "interest",
         "manual_interest",
@@ -690,6 +692,7 @@ class ShareAdmin(GenoBaseAdmin):
         "value",
         "comment",
         "note",
+        "tx_id",
     ]
     autocomplete_fields = ["name", "share_type", "attached_to_contract", "attached_to_building"]
     actions = GenoBaseAdmin.actions + [

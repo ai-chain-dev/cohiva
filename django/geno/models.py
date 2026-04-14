@@ -944,6 +944,12 @@ class Share(GenoBase):
         related_name="building_attached_shares",
     )
     note = models.CharField("Zusatzinfo", max_length=200, blank=True)
+    tx_id = models.CharField(
+        "TX ID",
+        max_length=200,
+        blank=True,
+        help_text="Crypto Transaction ID zur Abstimmung mit dem Blockchain Explorer",
+    )
 
     ## Reverse relation to Documents
     documents = GenericRelation("Document", related_query_name="shares")
