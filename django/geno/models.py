@@ -774,7 +774,7 @@ class Member(GenoBase):
         max_length=20,
         unique=True,
         blank=True,
-        help_text="Wird automatisch vergeben (z.B. M-00001).",
+        help_text="Wird automatisch vergeben (z.B. M-000001).",
     )
     name = models.OneToOneField(
         Address, verbose_name="Person/Organisation", on_delete=models.CASCADE
@@ -802,7 +802,7 @@ class Member(GenoBase):
             .aggregate(max_num=Max("numeric"))
         )
         next_num = (last["max_num"] or 0) + 1
-        return f"M-{next_num:05d}"
+        return f"M-{next_num:06d}"
 
     def save(self, *args, **kwargs):
         if not self.member_id:
