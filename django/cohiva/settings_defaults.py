@@ -1066,6 +1066,12 @@ COHIVA_ADMIN_NAVIGATION = [
                 "name": _("Members"),
             },
             {
+                "type": "view",
+                "value": "geno:member-share-report",
+                "permission": "geno.canview_share",
+                "icon": "table_chart",
+            },
+            {
                 "type": "tabgroup",
                 "name": "Dokumente erzeugen",
                 "items": [
