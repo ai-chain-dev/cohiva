@@ -49,6 +49,12 @@ urlpatterns = [
     ),
     path("member/overview/", geno_views.MemberOverviewView.as_view(), name="member_overview"),
     path("member/overview/plot/", geno_views.member_overview_plot),
+    path(
+        "member/share-report/",
+        geno_views.MemberShareReportView.as_view(),
+        name="member-share-report",
+    ),
+    path("member/share-report/export/", geno_views.member_share_report_export, name="member-share-report-export"),
     path("member/list/", geno_views.member_list),
     path("member/list_admin/", geno_views.member_list_admin),
     path(

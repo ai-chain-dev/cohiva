@@ -638,6 +638,150 @@ class MemberOverviewView(CohivaAdminViewMixin, TemplateView):
         }
 
 
+class MemberShareReportView(CohivaAdminViewMixin, TemplateView):
+    title = "Beteiligungen pro Mitglied"
+    permission_required = "geno.canview_share"
+    template_name = "geno/member_share_report.html"
+
+    actions = [
+        {
+            "title": "Excel-Export",
+            "path": "/geno/member/share-report/export/",
+            "icon": "download",
+            "variant": ResponseVariant.DEFAULT,
+            "permission_required": "geno.canview_share",
+        }
+    ]
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        today = datetime.date.today()
+
+        active_shares = get_active_shares()
+        share_types = list(ShareType.objects.order_by("name"))
+
+        rows = []
+        grand_total = 0
+
+        for member in (
+            Member.objects.filter(Q(date_leave=None) | Q(date_leave__gt=today))
+            .select_related("name")
+            .order_by("name__name", "name__first_name")
+        ):
+            member_shares = active_shares.filter(name=member.name)
+            if not member_shares.exists():
+                continue
+
+            by_type = {}
+            member_total = 0
+            for s in member_shares:
+                key = s.share_type_id
+                val = s.quantity * s.value
+                by_type[key] = by_type.get(key, 0) + val
+                member_total += val
+
+            grand_total += member_total
+            rows.append(
+                {
+                    "member": member,
+                    "values_by_type": [by_type.get(st.pk, 0) for st in share_types],
+                    "total": member_total,
+                }
+            )
+
+        context["rows"] = rows
+        context["share_types"] = share_types
+        context["grand_total"] = grand_total
+        return context
+
+
+@login_required
+def member_share_report_export(request):
+    import openpyxl
+    from openpyxl.styles import Font
+
+    if not request.user.has_perm("geno.canview_share"):
+        return unauthorized(request)
+
+    today = datetime.date.today()
+    active_shares = get_active_shares()
+    share_types = list(ShareType.objects.order_by("name"))
+
+    response = HttpResponse(
+        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
+    response["Content-Disposition"] = (
+        "attachment; filename=%s_Beteiligungen_pro_Mitglied.xlsx" % settings.GENO_FILENAME_STR
+    )
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Beteiligungen pro Mitglied"
+
+    # Build header columns: fixed columns + one per share type + total
+    fixed_cols = [
+        ("Mitglied-Nr.", 12),
+        ("Name", 35),
+        ("Eintritt", 12),
+    ]
+    header = [name for name, _ in fixed_cols] + [st.name for st in share_types] + ["Total (RON)"]
+    col_widths = [w for _, w in fixed_cols] + [18] * len(share_types) + [14]
+
+    for col_idx, (label, width) in enumerate(zip(header, col_widths), start=1):
+        cell = ws.cell(row=1, column=col_idx, value=label)
+        cell.font = Font(bold=True)
+        ws.column_dimensions[
+            openpyxl.utils.get_column_letter(col_idx)
+        ].width = width
+
+    grand_total = 0
+    type_totals = {st.pk: 0 for st in share_types}
+    row_num = 2
+    for member in (
+        Member.objects.filter(Q(date_leave=None) | Q(date_leave__gt=today))
+        .select_related("name")
+        .order_by("name__name", "name__first_name")
+    ):
+        member_shares = active_shares.filter(name=member.name)
+        if not member_shares.exists():
+            continue
+
+        by_type = {}
+        member_total = 0
+        for s in member_shares:
+            val = s.quantity * s.value
+            by_type[s.share_type_id] = by_type.get(s.share_type_id, 0) + val
+            type_totals[s.share_type_id] = type_totals.get(s.share_type_id, 0) + val
+            member_total += val
+
+        grand_total += member_total
+        row = [
+            member.member_id,
+            str(member.name),
+            member.date_join,
+        ]
+        for st in share_types:
+            row.append(float(by_type.get(st.pk, 0)))
+        row.append(float(member_total))
+
+        for col_idx, value in enumerate(row, start=1):
+            ws.cell(row=row_num, column=col_idx, value=value)
+        row_num += 1
+
+    # Grand total row
+    num_fixed = len(fixed_cols)
+    total_label_cell = ws.cell(row=row_num, column=num_fixed, value="Total")
+    total_label_cell.font = Font(bold=True)
+    for i, st in enumerate(share_types):
+        col_idx = num_fixed + 1 + i
+        cell = ws.cell(row=row_num, column=col_idx, value=float(type_totals.get(st.pk, 0)))
+        cell.font = Font(bold=True)
+    total_cell = ws.cell(row=row_num, column=len(header), value=float(grand_total))
+    total_cell.font = Font(bold=True)
+
+    wb.save(response)
+    return response
+
+
 @login_required
 def member_list(request):
     if not request.user.has_perm("geno.canview_member"):
