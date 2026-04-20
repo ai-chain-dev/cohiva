@@ -121,7 +121,7 @@ class TransactionCreateView(AccountInformationMixin, CreateView):
             self.object.user = self.user
             self.object.save()
             logger.info(
-                "Manual transaction: %s - RON %s [%s] %s"
+                "Manual transaction: %s - USDC %s [%s] %s"
                 % (
                     self.object.account,
                     self.object.amount,
@@ -131,7 +131,7 @@ class TransactionCreateView(AccountInformationMixin, CreateView):
             )
             messages.success(
                 request,
-                "Transaktion gespeichert: %s - RON %s [%s] %s"
+                "Transaktion gespeichert: %s - USDC %s [%s] %s"
                 % (
                     self.object.account,
                     self.object.amount,

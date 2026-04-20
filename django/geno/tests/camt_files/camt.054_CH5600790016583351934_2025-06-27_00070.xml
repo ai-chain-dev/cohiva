@@ -22,7 +22,7 @@
                 <Id>
                     <IBAN>CH5600790000000351934</IBAN>
                 </Id>
-                <Ccy>RON</Ccy>
+                <Ccy>USDC</Ccy>
                 <Ownr>
                     <Nm>Muster-Genossenschaft </Nm>
                     <PstlAdr>
@@ -34,7 +34,7 @@
             </Acct>
             <Ntry>
                 <NtryRef>CH7830790000000351934</NtryRef>
-                <Amt Ccy="RON">60.00</Amt>
+                <Amt Ccy="USDC">60.00</Amt>
                 <CdtDbtInd>CRDT</CdtDbtInd>
                 <Sts>BOOK</Sts>
                 <BookgDt>
@@ -59,7 +59,7 @@
                             <AcctSvcrRef>424500009094184743</AcctSvcrRef>
                             <AcctSvcrTxId>424500009094184743</AcctSvcrTxId>
                         </Refs>
-                        <Amt Ccy="RON">60.00</Amt>
+                        <Amt Ccy="USDC">60.00</Amt>
                         <CdtDbtInd>CRDT</CdtDbtInd>
                         <BkTxCd>
                             <Domn>

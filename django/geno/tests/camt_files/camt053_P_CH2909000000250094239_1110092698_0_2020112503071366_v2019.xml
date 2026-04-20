@@ -22,7 +22,7 @@
 				<Id>
 					<IBAN>CH2909000000250094239</IBAN>
 				</Id>
-				<Ccy>RON</Ccy>
+				<Ccy>USDC</Ccy>
 				<Ownr>
 					<Nm>Robert Schneider SA Grands magasins Biel/Bienne</Nm>
 				</Ownr>
@@ -33,7 +33,7 @@
 						<Cd>OPBD</Cd>
 					</CdOrPrtry>
 				</Tp>
-				<Amt Ccy="RON">211993.19</Amt>
+				<Amt Ccy="USDC">211993.19</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<Dt>
 					<Dt>2020-11-24</Dt>
@@ -45,7 +45,7 @@
 						<Cd>CLBD</Cd>
 					</CdOrPrtry>
 				</Tp>
-				<Amt Ccy="RON">215112.21</Amt>
+				<Amt Ccy="USDC">215112.21</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<Dt>
 					<Dt>2020-11-24</Dt>
@@ -57,7 +57,7 @@
 						<Cd>CLAV</Cd>
 					</CdOrPrtry>
 				</Tp>
-				<Amt Ccy="RON">215112.21</Amt>
+				<Amt Ccy="USDC">215112.21</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<Dt>
 					<Dt>2020-11-24</Dt>
@@ -69,7 +69,7 @@
 						<Cd>FWAV</Cd>
 					</CdOrPrtry>
 				</Tp>
-				<Amt Ccy="RON">216649.21</Amt>
+				<Amt Ccy="USDC">216649.21</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<Dt>
 					<Dt>2020-11-25</Dt>
@@ -77,7 +77,7 @@
 			</Bal>
 			<Ntry>
 				<NtryRef>41100000000872849</NtryRef>
-				<Amt Ccy="RON">4.50</Amt>
+				<Amt Ccy="USDC">4.50</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<RvslInd>false</RvslInd>
 				<Sts>
@@ -104,14 +104,14 @@
 						<Refs>
 							<AcctSvcrRef>0758103031480900</AcctSvcrRef>
 						</Refs>
-						<Amt Ccy="RON">4.50</Amt>
+						<Amt Ccy="USDC">4.50</Amt>
 						<CdtDbtInd>CRDT</CdtDbtInd>
 					</TxDtls>
 				</NtryDtls>
 				<AddtlNtryInf>GUTSCHRIFT CH-DD-BASISLASTSCHRIFT ID-NR. DES ZAHLUNGSEMPFÄNGERS: 41100000000872849 REFERENZ-NR: PmtInfId-CHDD-1</AddtlNtryInf>
 			</Ntry>
 			<Ntry>
-				<Amt Ccy="RON">77.70</Amt>
+				<Amt Ccy="USDC">77.70</Amt>
 				<CdtDbtInd>DBIT</CdtDbtInd>
 				<RvslInd>false</RvslInd>
 				<Sts>
@@ -138,14 +138,14 @@
 						<Refs>
 							<AcctSvcrRef>0758103031480977</AcctSvcrRef>
 						</Refs>
-						<Amt Ccy="RON">77.70</Amt>
+						<Amt Ccy="USDC">77.70</Amt>
 						<CdtDbtInd>CRDT</CdtDbtInd>
 					</TxDtls>
 				</NtryDtls>
 				<AddtlNtryInf>GUTSCHRIFT CH-DD-BASISLASTSCHRIFT ID-NR. DES ZAHLUNGSEMPFÄNGERS: 41100000000872849 REFERENZ-NR: PmtInfId-CHDD-1</AddtlNtryInf>
 			</Ntry>
 			<Ntry>
-				<Amt Ccy="RON">1500.00</Amt>
+				<Amt Ccy="USDC">1500.00</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<RvslInd>false</RvslInd>
 				<Sts>
@@ -172,7 +172,7 @@
 						<Refs>
 							<AcctSvcrRef>07582000303F0C7U</AcctSvcrRef>
 						</Refs>
-						<Amt Ccy="RON">1500.00</Amt>
+						<Amt Ccy="USDC">1500.00</Amt>
 						<CdtDbtInd>CRDT</CdtDbtInd>
 					</TxDtls>
 				</NtryDtls>
@@ -180,7 +180,7 @@
 			</Ntry>
 			<Ntry>
 				<NtryRef>CH2909000000250094239</NtryRef>
-				<Amt Ccy="RON">1537.00</Amt>
+				<Amt Ccy="USDC">1537.00</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<RvslInd>false</RvslInd>
 				<Sts>
@@ -207,7 +207,7 @@
 						<Refs>
 							<AcctSvcrRef>07582000303KBMSU</AcctSvcrRef>
 						</Refs>
-						<Amt Ccy="RON">1537.00</Amt>
+						<Amt Ccy="USDC">1537.00</Amt>
 						<CdtDbtInd>CRDT</CdtDbtInd>
 					</TxDtls>
 				</NtryDtls>
@@ -215,7 +215,7 @@
 			</Ntry>
 			<Ntry>
 				<NtryRef>CH7730000001250094239</NtryRef>
-				<Amt Ccy="RON">1692.22</Amt>
+				<Amt Ccy="USDC">1692.22</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<RvslInd>false</RvslInd>
 				<Sts>
@@ -242,7 +242,7 @@
 						<Refs>
 							<AcctSvcrRef>07582000303KBMSU</AcctSvcrRef>
 						</Refs>
-						<Amt Ccy="RON">1692.22</Amt>
+						<Amt Ccy="USDC">1692.22</Amt>
 						<CdtDbtInd>CRDT</CdtDbtInd>
 					</TxDtls>
 				</NtryDtls>

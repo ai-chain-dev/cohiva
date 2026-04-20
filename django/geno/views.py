@@ -639,7 +639,7 @@ class MemberOverviewView(CohivaAdminViewMixin, TemplateView):
 
 
 class MemberShareReportView(CohivaAdminViewMixin, TemplateView):
-    title = "Beteiligungen pro Mitglied"
+    title = "Shares per member"
     permission_required = "geno.canview_share"
     template_name = "geno/member_share_report.html"
 
@@ -715,7 +715,7 @@ def member_share_report_export(request):
     )
     wb = openpyxl.Workbook()
     ws = wb.active
-    ws.title = "Beteiligungen pro Mitglied"
+    ws.title = "Shares per member"
 
     # Build header columns: fixed columns + one per share type + total
     fixed_cols = [
@@ -723,7 +723,7 @@ def member_share_report_export(request):
         ("Name", 35),
         ("Eintritt", 12),
     ]
-    header = [name for name, _ in fixed_cols] + [st.name for st in share_types] + ["Total (RON)"]
+    header = [name for name, _ in fixed_cols] + [st.name for st in share_types] + ["Total (USDC)"]
     col_widths = [w for _, w in fixed_cols] + [18] * len(share_types) + [14]
 
     for col_idx, (label, width) in enumerate(zip(header, col_widths), start=1):
@@ -1031,7 +1031,7 @@ def share_export(request):
             ("A", "Name", 30),
             ("B", "Typ", 20),
             ("C", "Anzahl", 8),
-            ("D", "Summe RON", 12),
+            ("D", "Summe USDC", 12),
             ("E", "Fälligkeit", 10),
             ("F", "Laufzeit", 8),
             ("G", "Mitgliedschaft", 30),
@@ -1044,8 +1044,8 @@ def share_export(request):
             ("D", "Typ", 20),
             ("E", "Datum", 12),
             ("F", "Anzahl", 8),
-            ("G", "Betrag RON", 12),
-            ("H", "Summe RON", 12),
+            ("G", "Betrag USDC", 12),
+            ("H", "Summe USDC", 12),
             ("I", "Zinssatz-Modus", 10),
             ("J", "Zinssatz", 10),
             ("K", "Zins?", 8),
@@ -1818,7 +1818,7 @@ class ShareInterestView(CohivaAdminViewMixin, TemplateView):
             ("A", "Name", 30),
             ("B", "Typ", 20),
             ("C", "Datum", 25),
-            ("D", "Saldo RON", 12),
+            ("D", "Saldo USDC", 12),
             ("E", "Tage", 8),
             ("F", "Satz", 8),
             ("G", "Bruttozins", 12),
@@ -2020,7 +2020,7 @@ def share_mailing(request):
                     }
                 )
                 obj.append(
-                    "Darlehen-INFO: RON %s,  %s  -> %s"
+                    "Darlehen-INFO: USDC %s,  %s  -> %s"
                     % (
                         nformat(d.value),
                         duedate.strftime("%d.%m.%Y"),
@@ -3609,7 +3609,7 @@ class TransactionManualView(CohivaAdminViewMixin, FormView):
                 book.add_transaction(
                     amount, from_account, to_account, form.cleaned_data["date"], description
                 )
-                messages.success(self.request, f"Buchung erstellt: RON {amount}, {description}")
+                messages.success(self.request, f"Buchung erstellt: USDC {amount}, {description}")
         except Exception as e:
             messages.error(self.request, "Konnte Buchung nicht erstellen: %s" % e)
             return True
@@ -3654,7 +3654,7 @@ class TransactionManualView(CohivaAdminViewMixin, FormView):
         share.save()
         messages.info(
             self.request,
-            "%sx RON %s %s hinzugefügt - %s [%s]"
+            "%sx USDC %s %s hinzugefügt - %s [%s]"
             % (
                 count,
                 value,
@@ -3682,7 +3682,7 @@ class TransactionManualView(CohivaAdminViewMixin, FormView):
             None,
             note,
         )
-        info = "%s: %s RON %s [%s]" % (
+        info = "%s: %s USDC %s [%s]" % (
             form.cleaned_data["transaction"],
             form.cleaned_data["date"],
             form.cleaned_data["amount"],
@@ -4025,7 +4025,7 @@ class InvoiceManualView(CohivaAdminViewMixin, TemplateView):
                 invoice_lines.append(line)
                 lines_count += 1
                 total_amount += line["amount"]
-                comment.append("%s RON %s" % (line["text"], line["total"]))
+                comment.append("%s USDC %s" % (line["text"], line["total"]))
 
         if not lines_count:
             messages.error(
@@ -4109,7 +4109,7 @@ class InvoiceManualView(CohivaAdminViewMixin, TemplateView):
                 dry_run,
             )
 
-            info = "%s RON %s Nr. %s/%s, %s" % (
+            info = "%s USDC %s Nr. %s/%s, %s" % (
                 address,
                 total_amount,
                 context["invoice_nr"],

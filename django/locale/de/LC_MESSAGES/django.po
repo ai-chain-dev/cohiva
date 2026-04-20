@@ -950,7 +950,7 @@ msgid "Anzahl"
 msgstr ""
 
 #: geno/templates/geno/share_overview.html:67
-msgid "Summe RON"
+msgid "Summe USDC"
 msgstr ""
 
 #: geno/templates/geno/share_overview.html:74
@@ -963,7 +963,7 @@ msgstr ""
 
 #: geno/templates/geno/share_overview.html:92
 #, python-format
-msgid "RON %(value)s"
+msgid "USDC %(value)s"
 msgstr ""
 
 #: geno/templates/geno/share_overview.html:102

@@ -21,14 +21,14 @@
 				<Id>
 					<IBAN>CH2909000000250094239</IBAN>
 				</Id>
-				<Ccy>RON</Ccy>
+				<Ccy>USDC</Ccy>
 				<Ownr>
 					<Nm>Robert Schneider SA Grands magasins Biel/Bienne</Nm>
 				</Ownr>
 			</Acct>
 			<Ntry>
 				<NtryRef>CH2909000000250094239</NtryRef>
-				<Amt Ccy="RON">522.10</Amt>
+				<Amt Ccy="USDC">522.10</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<RvslInd>false</RvslInd>
 				<Sts>
@@ -65,7 +65,7 @@
 								<Ref>00000000000000000000020</Ref>
 							</Prtry>
 						</Refs>
-						<Amt Ccy="RON">522.10</Amt>
+						<Amt Ccy="USDC">522.10</Amt>
 						<CdtDbtInd>CRDT</CdtDbtInd>
 						<BkTxCd>
 							<Domn>

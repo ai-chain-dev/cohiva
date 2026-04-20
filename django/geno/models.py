@@ -1803,7 +1803,7 @@ class Invoice(GenoBase):
             namestr = "%s" % self.person
         else:
             namestr = "%s" % self.contract
-        return "%s/%s %s RON %.2f" % (namestr, self.name, self.invoice_type, self.amount)
+        return "%s/%s %s USDC %.2f" % (namestr, self.name, self.invoice_type, self.amount)
 
     class Meta:
         verbose_name = "Rechnung"

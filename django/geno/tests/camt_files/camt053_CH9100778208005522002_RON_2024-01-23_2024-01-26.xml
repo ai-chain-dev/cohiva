@@ -22,7 +22,7 @@
         <Id>
           <IBAN>CH9100778208005522002</IBAN>
         </Id>
-        <Ccy>RON</Ccy>
+        <Ccy>USDC</Ccy>
         <Ownr>
           <Nm>Wohnbaugenossenschaft Warmbächli</Nm>
         </Ownr>
@@ -38,7 +38,7 @@
             <Cd>OPBD</Cd>
           </CdOrPrtry>
         </Tp>
-        <Amt Ccy="RON">440264.02</Amt>
+        <Amt Ccy="USDC">440264.02</Amt>
         <CdtDbtInd>CRDT</CdtDbtInd>
         <Dt>
           <Dt>2024-01-23</Dt>
@@ -50,7 +50,7 @@
             <Cd>CLBD</Cd>
           </CdOrPrtry>
         </Tp>
-        <Amt Ccy="RON">496886.12</Amt>
+        <Amt Ccy="USDC">496886.12</Amt>
         <CdtDbtInd>CRDT</CdtDbtInd>
         <Dt>
           <Dt>2024-01-26</Dt>
@@ -62,7 +62,7 @@
             <Cd>CLAV</Cd>
           </CdOrPrtry>
         </Tp>
-        <Amt Ccy="RON">496886.12</Amt>
+        <Amt Ccy="USDC">496886.12</Amt>
         <CdtDbtInd>CRDT</CdtDbtInd>
         <Dt>
           <Dt>2024-01-26</Dt>
@@ -76,7 +76,7 @@
       </TxsSummry>
       <Ntry>
         <NtryRef>CH1630778208005522002/320000</NtryRef>
-        <Amt Ccy="RON">30</Amt>
+        <Amt Ccy="USDC">30</Amt>
         <CdtDbtInd>CRDT</CdtDbtInd>
         <RvslInd>false</RvslInd>
         <Sts>BOOK</Sts>
@@ -102,7 +102,7 @@
         <NtryDtls>
           <Btch>
             <NbOfTxs>1</NbOfTxs>
-            <TtlAmt Ccy="RON">30</TtlAmt>
+            <TtlAmt Ccy="USDC">30</TtlAmt>
             <CdtDbtInd>CRDT</CdtDbtInd>
           </Btch>
           <TxDtls>
@@ -112,11 +112,11 @@
               <InstrId>07842654DDF7E00E</InstrId>
               <EndToEndId>38158f74c93c4c9facc2a6ee74896b76</EndToEndId>
             </Refs>
-            <Amt Ccy="RON">30</Amt>
+            <Amt Ccy="USDC">30</Amt>
             <CdtDbtInd>CRDT</CdtDbtInd>
             <AmtDtls>
               <InstdAmt>
-                <Amt Ccy="RON">30</Amt>
+                <Amt Ccy="USDC">30</Amt>
               </InstdAmt>
             </AmtDtls>
             <BkTxCd>
@@ -188,7 +188,7 @@
       </Ntry>
       <Ntry>
         <NtryRef>CH1630778208005522002/350000</NtryRef>
-        <Amt Ccy="RON">100</Amt>
+        <Amt Ccy="USDC">100</Amt>
         <CdtDbtInd>CRDT</CdtDbtInd>
         <RvslInd>false</RvslInd>
         <Sts>BOOK</Sts>
@@ -214,7 +214,7 @@
         <NtryDtls>
           <Btch>
             <NbOfTxs>1</NbOfTxs>
-            <TtlAmt Ccy="RON">100</TtlAmt>
+            <TtlAmt Ccy="USDC">100</TtlAmt>
             <CdtDbtInd>CRDT</CdtDbtInd>
           </Btch>
           <TxDtls>
@@ -224,11 +224,11 @@
               <InstrId>18251446166/6XXX</InstrId>
               <EndToEndId>NOTPROVIDED</EndToEndId>
             </Refs>
-            <Amt Ccy="RON">100</Amt>
+            <Amt Ccy="USDC">100</Amt>
             <CdtDbtInd>CRDT</CdtDbtInd>
             <AmtDtls>
               <InstdAmt>
-                <Amt Ccy="RON">100</Amt>
+                <Amt Ccy="USDC">100</Amt>
               </InstdAmt>
             </AmtDtls>
             <BkTxCd>
@@ -311,7 +311,7 @@
       </Ntry>
       <Ntry>
         <NtryRef>CH1630778208005522002/100000</NtryRef>
-        <Amt Ccy="RON">2865</Amt>
+        <Amt Ccy="USDC">2865</Amt>
         <CdtDbtInd>CRDT</CdtDbtInd>
         <RvslInd>false</RvslInd>
         <Sts>BOOK</Sts>
@@ -337,7 +337,7 @@
         <NtryDtls>
           <Btch>
             <NbOfTxs>2</NbOfTxs>
-            <TtlAmt Ccy="RON">2865</TtlAmt>
+            <TtlAmt Ccy="USDC">2865</TtlAmt>
             <CdtDbtInd>CRDT</CdtDbtInd>
           </Btch>
           <TxDtls>
@@ -347,11 +347,11 @@
               <InstrId>40124179735.0001</InstrId>
               <EndToEndId>NOTPROVIDED</EndToEndId>
             </Refs>
-            <Amt Ccy="RON">1265</Amt>
+            <Amt Ccy="USDC">1265</Amt>
             <CdtDbtInd>CRDT</CdtDbtInd>
             <AmtDtls>
               <InstdAmt>
-                <Amt Ccy="RON">1265</Amt>
+                <Amt Ccy="USDC">1265</Amt>
               </InstdAmt>
             </AmtDtls>
             <BkTxCd>
@@ -427,11 +427,11 @@
               <InstrId>240124CH0B9PQQQ8</InstrId>
               <EndToEndId>NOTPROVIDED</EndToEndId>
             </Refs>
-            <Amt Ccy="RON">1600</Amt>
+            <Amt Ccy="USDC">1600</Amt>
             <CdtDbtInd>CRDT</CdtDbtInd>
             <AmtDtls>
               <InstdAmt>
-                <Amt Ccy="RON">1600</Amt>
+                <Amt Ccy="USDC">1600</Amt>
               </InstdAmt>
             </AmtDtls>
             <BkTxCd>

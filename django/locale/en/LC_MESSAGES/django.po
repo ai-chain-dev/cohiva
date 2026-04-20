@@ -976,8 +976,8 @@ msgid "Anzahl"
 msgstr "Count"
 
 #: geno/templates/geno/share_overview.html:67
-msgid "Summe RON"
-msgstr "Total RON"
+msgid "Summe USDC"
+msgstr "Total USDC"
 
 #: geno/templates/geno/share_overview.html:74
 msgid "Letzter Eingang"
@@ -989,8 +989,8 @@ msgstr "TOTAL"
 
 #: geno/templates/geno/share_overview.html:92
 #, python-format
-msgid "RON %(value)s"
-msgstr "RON %(value)s"
+msgid "USDC %(value)s"
+msgstr "USDC %(value)s"
 
 #: geno/templates/geno/share_overview.html:102
 msgid "WARNUNG: Personen ohne Mitgliedschaft mit Anteilsscheinen"

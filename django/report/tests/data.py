@@ -58,8 +58,8 @@ def create_measurement_data(cls):
             "Strombezug Niedertarif(kWh)": lambda ru: ru.area * 2,
             "Strombezug Hochtarif EW (kWh)": lambda ru: ru.area * 6,
             "Solarstrom (kWh)": lambda ru: ru.area * 4,
-            "Strombezug Niedertarif(RON)": lambda ru: ru.area * 2 * 0.28,
-            "Strombezug EW (RON)": lambda ru: ru.area * 6 * 0.30,
+            "Strombezug Niedertarif(USDC)": lambda ru: ru.area * 2 * 0.28,
+            "Strombezug EW (USDC)": lambda ru: ru.area * 6 * 0.30,
         },
         "Waerme": {
             "Gebäudeeinheit": "object",

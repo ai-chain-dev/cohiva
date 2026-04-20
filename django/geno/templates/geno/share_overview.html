@@ -64,7 +64,7 @@
               </dd>
             </div>
             <div class="flex justify-between">
-              <dt class="text-sm text-font-light dark:text-font-dark">{% trans "Summe RON" %}</dt>
+              <dt class="text-sm text-font-light dark:text-font-dark">{% trans "Summe USDC" %}</dt>
               <dd class="text-sm font-medium text-font-important-light dark:text-font-important-dark">
                 {{ stat.value }}
               </dd>
@@ -89,7 +89,7 @@
           {% trans "TOTAL" %}
         </h3>
         <p class="text-xl font-bold text-primary-600 dark:text-primary-400">
-          {% blocktrans with value=total_value %}RON {{ value }}{% endblocktrans %}
+          {% blocktrans with value=total_value %}USDC {{ value }}{% endblocktrans %}
         </p>
       </div>
     </div>

@@ -32,7 +32,7 @@
 						<Cd>OPBD</Cd>
 					</CdOrPrtry>
 				</Tp>
-				<Amt Ccy="RON">211993.19</Amt>
+				<Amt Ccy="USDC">211993.19</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<Dt>
 					<Dt>2020-11-24</Dt>
@@ -44,7 +44,7 @@
 						<Cd>CLBD</Cd>
 					</CdOrPrtry>
 				</Tp>
-				<Amt Ccy="RON">215112.21</Amt>
+				<Amt Ccy="USDC">215112.21</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<Dt>
 					<Dt>2020-11-24</Dt>
@@ -56,7 +56,7 @@
 						<Cd>CLAV</Cd>
 					</CdOrPrtry>
 				</Tp>
-				<Amt Ccy="RON">215112.21</Amt>
+				<Amt Ccy="USDC">215112.21</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<Dt>
 					<Dt>2020-11-24</Dt>
@@ -68,7 +68,7 @@
 						<Cd>FWAV</Cd>
 					</CdOrPrtry>
 				</Tp>
-				<Amt Ccy="RON">216649.21</Amt>
+				<Amt Ccy="USDC">216649.21</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<Dt>
 					<Dt>2020-11-25</Dt>
@@ -77,7 +77,7 @@
 {% for payment in payments %}
 			<Ntry>
 				<NtryRef>41100000000872849</NtryRef>
-				<Amt Ccy="RON">{{ payment.amount }}</Amt>
+				<Amt Ccy="USDC">{{ payment.amount }}</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<RvslInd>false</RvslInd>
 				<Sts>BOOK</Sts>
@@ -102,7 +102,7 @@
 						<Refs>
 							<AcctSvcrRef>{{ payment.transaction_id}}</AcctSvcrRef>
 						</Refs>
-						<Amt Ccy="RON">{{ payment.amount }}</Amt>
+						<Amt Ccy="USDC">{{ payment.amount }}</Amt>
 						<CdtDbtInd>CRDT</CdtDbtInd>
             <RltdPties>
               <Dbtr>

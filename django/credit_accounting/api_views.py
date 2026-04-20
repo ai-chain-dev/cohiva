@@ -251,13 +251,13 @@ class PosTransactionView(PosView):
             trans.save()
             logger.info(
                 f"Added transaction: {request.data.get('name')}, account={account}, "
-                f"RON {request.data.get('amount')} {transaction_date} "
+                f"USDC {request.data.get('amount')} {transaction_date} "
                 f"{request.data.get('note', '')}"
             )
         except Exception as e:
             logger.error(
                 f"Could not create transaction: {e} - {request.data.get('name')}, "
-                f"account={account}, RON {request.data.get('amount')} {transaction_date} "
+                f"account={account}, USDC {request.data.get('amount')} {transaction_date} "
                 f"{request.data.get('note', '')} [{request.data.get('id', None)}]"
             )
             return Response({"status": "Error", "error": "Could not create transaction."})
@@ -367,7 +367,7 @@ class PosAccountView(PosView):
             except Exception as e:
                 logger.error(
                     f"Could not create transaction: {e} - {t.get('name')}, account={account}, "
-                    f"RON {t.get('amount')} {t.get('date')} {t.get('note', '')} "
+                    f"USDC {t.get('amount')} {t.get('date')} {t.get('note', '')} "
                     f"[{t.get('id', None)}]"
                 )
                 count["error"] += 1

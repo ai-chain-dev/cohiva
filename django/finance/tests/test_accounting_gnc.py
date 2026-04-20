@@ -57,7 +57,7 @@ class GnucashBookTestCase(TestCase):
                     self.assertEqual(split.amount, Decimal(-100))
             self.assertEqual(tr.date, datetime.date(2020, 1, 1))
             self.assertEqual(tr.description, "Test")
-            self.assertEqual(tr.currency, "RON")
+            self.assertEqual(tr.currency, "USDC")
 
             with self.assertRaises(KeyError):
                 book.get_transaction("gnc_0_invalid")

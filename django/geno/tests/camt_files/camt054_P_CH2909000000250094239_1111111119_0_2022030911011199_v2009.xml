@@ -30,7 +30,7 @@
 			</Acct>
 			<Ntry>
 				<NtryRef>CH2909000000250094239</NtryRef>
-				<Amt Ccy="RON">501.05</Amt>
+				<Amt Ccy="USDC">501.05</Amt>
 				<CdtDbtInd>CRDT</CdtDbtInd>
 				<RvslInd>false</RvslInd>
 				<Sts>BOOK</Sts>
@@ -64,7 +64,7 @@
 								<Ref>00000000000000000000020</Ref>
 							</Prtry>
 						</Refs>
-						<Amt Ccy="RON">501.05</Amt>
+						<Amt Ccy="USDC">501.05</Amt>
 						<CdtDbtInd>CRDT</CdtDbtInd>
 						<BkTxCd>
 							<Domn>

@@ -1070,6 +1070,7 @@ COHIVA_ADMIN_NAVIGATION = [
                 "value": "geno:member-share-report",
                 "permission": "geno.canview_share",
                 "icon": "table_chart",
+                "name": _("Member Shares"),
             },
             {
                 "type": "tabgroup",

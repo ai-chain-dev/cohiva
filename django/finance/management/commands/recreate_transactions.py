@@ -58,7 +58,7 @@ class Command(BaseCommand):
         accounts_summary = {}
         for invoice in invoices:
             warnings = []
-            output.append(f"  - {invoice.date} {invoice} RON {invoice.amount}")
+            output.append(f"  - {invoice.date} {invoice} USDC {invoice.amount}")
             if invoice.contract and invoice.person:
                 raise RuntimeError("Can't specify address AND contract.")
 

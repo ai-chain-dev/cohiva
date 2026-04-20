@@ -1039,9 +1039,9 @@ def get_context_data(doctype, obj_id, extra_context):
             else:
                 c["betreff"] = "Bestätigung Anteilscheine"
             if obj.quantity == 1:
-                c["betrag_text"] = "1 Anteilschein zu RON %s" % (nformat(obj.value))
+                c["betrag_text"] = "1 Anteilschein zu USDC %s" % (nformat(obj.value))
             else:
-                c["betrag_text"] = "%s Anteilscheine zu RON %s in Summe RON %s" % (
+                c["betrag_text"] = "%s Anteilscheine zu USDC %s in Summe USDC %s" % (
                     nformat(obj.quantity, 0),
                     nformat(obj.value),
                     nformat(obj.quantity * obj.value),
@@ -1062,21 +1062,21 @@ def get_context_data(doctype, obj_id, extra_context):
                 c["total_anzahl"] = "%s Anteilscheine" % (nformat(count, 0))
             c["total_summe"] = "%s" % (nformat(amount))
         elif obj.share_type == stype_loan_noint:
-            c["betrag_text"] = "Zinsloses Darlehen von RON %s%s" % (
+            c["betrag_text"] = "Zinsloses Darlehen von USDC %s%s" % (
                 nformat(obj.value, 2),
                 duedate_text,
             )
         elif obj.share_type == stype_loan_int:
-            c["betrag_text"] = "Darlehen von RON %s%s" % (
+            c["betrag_text"] = "Darlehen von USDC %s%s" % (
                 nformat(obj.value, 2),
                 duedate_text,
             )
             c["betrag_text_zusatz"] = "Aktueller Zinssatz: %s%%" % (nformat(obj.interest(), 2))
         elif obj.share_type == stype_deposit:
-            c["betrag_text"] = "Einlage in die Depositenkasse von RON %s" % (nformat(obj.value, 2))
+            c["betrag_text"] = "Einlage in die Depositenkasse von USDC %s" % (nformat(obj.value, 2))
             c["betrag_text_zusatz"] = "Aktueller Zinssatz: %s%%" % (nformat(obj.interest(), 2))
         elif obj.share_type == stype_loan_special:
-            c["betrag_text"] = "Darlehen von RON %s%s" % (
+            c["betrag_text"] = "Darlehen von USDC %s%s" % (
                 nformat(obj.value, 2),
                 duedate_text,
             )
@@ -1084,7 +1084,7 @@ def get_context_data(doctype, obj_id, extra_context):
                 nformat(obj.interest(), 2)
             )
         else:
-            c["betrag_text"] = "%s von RON %s" % (
+            c["betrag_text"] = "%s von USDC %s" % (
                 obj.share_type.name,
                 nformat(obj.value, 2),
             )

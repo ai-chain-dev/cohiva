@@ -210,14 +210,14 @@ class TransactionTestCase(TestCase):
         t.description = "Test Description"
         self.assertEqual(str(t), "2020-01-02 Test Description")
         t.splits.append(Split(account=Account("B", "2"), amount=-50))
-        self.assertEqual(str(t), "2020-01-02 RON 150 A [1] => B [2] Test Description")
+        self.assertEqual(str(t), "2020-01-02 USDC 150 A [1] => B [2] Test Description")
         t.splits.append(Split(account=Account("C", "3"), amount=100))
         self.assertEqual(
-            str(t), "2020-01-02 RON 150 A [1] => B [2] (+ 1 weitere Buchung) Test Description"
+            str(t), "2020-01-02 USDC 150 A [1] => B [2] (+ 1 weitere Buchung) Test Description"
         )
         t.splits.append(Split(account=Account("D", "4"), amount=0))
         self.assertEqual(
-            str(t), "2020-01-02 RON 150 A [1] => B [2] (+ 2 weitere Buchungen) Test Description"
+            str(t), "2020-01-02 USDC 150 A [1] => B [2] (+ 2 weitere Buchungen) Test Description"
         )
 
         self.assertEqual(repr(t), "Transaction(date=2020-01-02, description='Test Description')")

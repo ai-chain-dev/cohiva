@@ -267,7 +267,7 @@ class QRBill(APIView):
                     f"Konnte Buchung für {description} nicht erstellen: {e}"
                 ) from None
             logger.info(
-                "%sAdded transaction: Verrechnnung Akontozahlung RON %s for contract %s (id=%s)."
+                "%sAdded transaction: Verrechnnung Akontozahlung USDC %s for contract %s (id=%s)."
                 % (self.dry_run_tag, amount, self.contract, request.data["contract_id"])
             )
 
@@ -298,7 +298,7 @@ class QRBill(APIView):
                     f"Konnte Rechnungs-Objekt für Vertrag ID {self.contract.id} nicht erzeugen."
                 )
             logger.info(
-                "%sAdded invoice %s for contract %s (id=%s): RON %s / %s"
+                "%sAdded invoice %s for contract %s (id=%s): USDC %s / %s"
                 % (
                     self.dry_run_tag,
                     self.invoice_category,
@@ -327,7 +327,7 @@ class QRBill(APIView):
                     f"Konnte Buchung für {description} nicht erstellen: {e}"
                 ) from None
             logger.info(
-                "%sAdded transaction: %s RON %s for virtual contract (id=%s)."
+                "%sAdded transaction: %s USDC %s for virtual contract (id=%s)."
                 % (self.dry_run_tag, description, total_amount, request.data["contract_id"])
             )
 
@@ -399,12 +399,12 @@ class QRBill(APIView):
             self.context["qr_amount"] = 0
             if self.contract and self.contract.bankaccount:
                 self.context["extra_text"] = (
-                    "Ohne anderslautenden Gegenbericht in den nächsten 30 Tagen, werden wir das Guthaben von RON %s auf das bei uns registrierte Konto %s überweisen."
+                    "Ohne anderslautenden Gegenbericht in den nächsten 30 Tagen, werden wir das Guthaben von USDC %s auf das bei uns registrierte Konto %s überweisen."
                     % (nformat(-1 * total_amount), self.contract.bankaccount)
                 )
             else:
                 self.context["extra_text"] = (
-                    f"Wir bitten %s, uns die Kontoangaben für die Rückerstattung des Guthabens von RON %s in den nächsten 30 Tagen mitzuteilen (am liebsten per Email an {settings.SERVER_EMAIL}). Vielen Dank!"
+                    f"Wir bitten %s, uns die Kontoangaben für die Rückerstattung des Guthabens von USDC %s in den nächsten 30 Tagen mitzuteilen (am liebsten per Email an {settings.SERVER_EMAIL}). Vielen Dank!"
                     % (self.context["dich"], nformat(-1 * total_amount))
                 )
         else:
@@ -437,7 +437,7 @@ class QRBill(APIView):
             render=True,
             dry_run=self.dry_run,
         )
-        info = "%s RON %s Nr. %s/%s, %s" % (
+        info = "%s USDC %s Nr. %s/%s, %s" % (
             self.address,
             total_amount,
             self.context["invoice_nr"],

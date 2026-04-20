@@ -1190,9 +1190,9 @@ def guess_transaction(transaction):
 
     ## Try to get name from lookup table (from more specific to less specific combos)
     lookups = [
-        "%s__RON%s__N:%s" % (transaction["person"], transaction["amount"], transaction["note"]),
+        "%s__USDC%s__N:%s" % (transaction["person"], transaction["amount"], transaction["note"]),
         "%s__N:%s" % (transaction["person"], transaction["note"]),
-        "%s__RON%s" % (transaction["person"], transaction["amount"]),
+        "%s__USDC%s" % (transaction["person"], transaction["amount"]),
         "%s" % (transaction["person"]),
     ]
     lu = None
@@ -1547,7 +1547,7 @@ def add_sepa_transaction(book, tx, errors, skipped, success):
     bill_info = parse_reference_nr(tx["reference_nr"])
     if "error" in bill_info:
         errors.append(
-            "Ungültige Referenznummer: %s für Buchung %s - RON %s (Referenznr. %s, %s)"
+            "Ungültige Referenznummer: %s für Buchung %s - USDC %s (Referenznr. %s, %s)"
             % (
                 bill_info["error"],
                 tx["date"],
@@ -1561,7 +1561,7 @@ def add_sepa_transaction(book, tx, errors, skipped, success):
         bill_info_name = bill_info["person"]
     else:
         bill_info_name = bill_info["contract"]
-    transaction_info_txt = "%s - RON %s: %s [%s] (%s)" % (
+    transaction_info_txt = "%s - USDC %s: %s [%s] (%s)" % (
         tx["date"],
         tx["amount"],
         bill_info["description"],
