@@ -149,12 +149,12 @@ class GenoBaseAdmin(ModelAdmin, ExportXlsMixin):
                     setattr(self, attr, settings.COHIVA_ADMIN_FIELDS[module_name][setting_name])
 
 
-@admin.display(description="Anrede auf 'Herr' setzen")
+@admin.display(description="Set salutation to 'Mr'")
 def set_title_mr(modeladmin, request, queryset):
     queryset.update(title="Herr")
 
 
-@admin.display(description="Anrede auf 'Frau' setzen")
+@admin.display(description="Set salutation to 'Mrs/Ms'")
 def set_title_mrs(modeladmin, request, queryset):
     queryset.update(title="Frau")
 
@@ -558,12 +558,12 @@ class ShareTypeAdmin(GenoBaseAdmin):
     search_fields = ["name", "description"]
 
 
-@admin.display(description='Als "bezahlt" markieren')
+@admin.display(description='Mark as "paid"')
 def share_mark_paid(modeladmin, request, queryset):
     queryset.update(state="bezahlt", date=datetime.date.today())
 
 
-@admin.display(description='Als "gefordert" markieren')
+@admin.display(description='Mark as "due"')
 def share_mark_billed(modeladmin, request, queryset):
     queryset.update(state="gefordert", date=datetime.date.today())
 

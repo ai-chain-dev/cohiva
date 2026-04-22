@@ -973,7 +973,7 @@ msgstr "Date filter"
 
 #: geno/templates/geno/share_overview.html:61
 msgid "Anzahl"
-msgstr "Count"
+msgstr "Quantity"
 
 #: geno/templates/geno/share_overview.html:67
 msgid "Summe USDC"

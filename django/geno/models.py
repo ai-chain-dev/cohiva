@@ -224,12 +224,12 @@ class Address(GenoBase):
         "Organisation", max_length=150, blank=True, help_text="Bei Privatpersonen: leer lassen"
     )
     name = models.CharField(
-        "Nachname", max_length=150, blank=True, help_text="Bei Organisationen: Kontaktperson"
+        "Last name", max_length=150, blank=True, help_text="For organisations: contact person"
     )  ## db_index=True ???
-    first_name = models.CharField("Vorname", max_length=100, blank=True)  ## db_index=True ???
-    title = models.CharField("Anrede", max_length=20, choices=TITLE_CHOICES, blank=True)
+    first_name = models.CharField("First name", max_length=100, blank=True)  ## db_index=True ???
+    title = models.CharField("Salutation", max_length=20, choices=TITLE_CHOICES, blank=True)
     formal = models.CharField(
-        "Duzen", max_length=20, choices=FORMAL_CHOICES, default=get_default_formal_choice
+        "Form of address", max_length=20, choices=FORMAL_CHOICES, default=get_default_formal_choice, blank=True
     )
     extra = models.CharField(
         "Adresszusatz", max_length=100, blank=True, help_text="z.B. c/o (optional)"
@@ -921,22 +921,22 @@ class ShareType(GenoBase):
     )
 
     class Meta:
-        verbose_name = "Beteiligungstyp"
-        verbose_name_plural = "Beteiligungstypen"
+        verbose_name = "Contribution type"
+        verbose_name_plural = "Contribution types"
 
 
 class Share(GenoBase):
     name = models.ForeignKey(Address, verbose_name="Person/Organisation", on_delete=models.CASCADE)
     share_type = models.ForeignKey(
-        ShareType, verbose_name="Beteiligungstyp", on_delete=models.CASCADE
+        ShareType, verbose_name="Contribution type", on_delete=models.CASCADE
     )
     STATE_CHOICES = (
-        ("gefordert", "gefordert"),
-        ("bezahlt", "bezahlt"),
+        ("gefordert", "due"),
+        ("bezahlt", "paid"),
     )
     state = models.CharField("Status", max_length=50, choices=STATE_CHOICES, blank=True)
-    date = models.DateField("Datum Beginn")
-    date_end = models.DateField("Datum Ende", null=True, blank=True, default=None)
+    date = models.DateField("Start Date")
+    date_end = models.DateField("End Date", null=True, blank=True, default=None)
     duration = models.PositiveIntegerField(
         "Laufzeit", null=True, blank=True, help_text="Jahre (bei Darlehen)"
     )
@@ -946,8 +946,8 @@ class Share(GenoBase):
         blank=True,
         help_text="Explizites Fälligkeitsdatum; leer=autom. mit Laufzeit berechnet",
     )
-    quantity = models.DecimalField("Anzahl", max_digits=38, decimal_places=18, default=1)
-    value = models.DecimalField("Betrag pro Stück", max_digits=10, decimal_places=2)
+    quantity = models.DecimalField("Quantity", max_digits=38, decimal_places=18, default=1)
+    value = models.DecimalField("Value per unit", max_digits=10, decimal_places=2)
     INTEREST_MODE_CHOICES = (
         ("Standard", "Standard"),
         ("Manual", "Manuell"),
