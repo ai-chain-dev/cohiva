@@ -447,7 +447,7 @@ def share_overview_boxplot(request):
         for m in Member.objects.filter(Q(date_leave=None) | Q(date_leave__gt=today)):
             total = 0
             for s in get_active_shares().filter(name=m.name).filter(share_type=share_type):
-                total += s.quantity * float(s.value)
+                total += float(s.quantity) * float(s.value)
             if total >= 1000:
                 stat_share.append(total / 1000.0)
         labels.append("%s\nn=%d" % (share_type.name, len(stat_share)))
@@ -464,7 +464,7 @@ def share_overview_boxplot(request):
             .exclude(share_type=stype_DarlehenSpezial)
             .exclude(share_type=stype_Hypothek)
         ):
-            total += s.quantity * float(s.value)
+            total += float(s.quantity) * float(s.value)
         if total >= 1000:
             stat_share.append(total / 1000.0)
         else:
@@ -485,7 +485,7 @@ def share_overview_boxplot(request):
                 .exclude(share_type=stype_DarlehenSpezial)
                 .exclude(share_type=stype_Hypothek)
             ):
-                total += s.quantity * float(s.value)
+                total += float(s.quantity) * float(s.value)
             if total >= 1000:
                 stat_share.append(total / 1000.0)
     stat.append(stat_share)

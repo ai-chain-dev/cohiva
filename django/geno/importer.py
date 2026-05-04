@@ -118,7 +118,7 @@ def process_eigenmittel():
         for share_type in ShareType.objects.all():
             summe = 0
             for s in get_active_shares().filter(name=m).filter(share_type=share_type):
-                summe += s.quantity * float(s.value)
+                summe += float(s.quantity) * float(s.value)
             members[m.pk][share_type_map[share_type.name]] = int(summe)
             total += summe
         members[m.pk]["total_eff"] = int(total)
