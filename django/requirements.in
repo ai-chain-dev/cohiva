@@ -47,6 +47,10 @@ djangorestframework
 dj-rest-auth
 django-cors-headers # Module corsheaders
 
+## Reverse Roulette → member-share auto-link integration
+phonenumbers
+requests  # explicit (already pulled transitively, but services.py imports it directly)
+
 ## Templates / document generation
 #jpt-templated-docs    ## DEPRECATED
 appy

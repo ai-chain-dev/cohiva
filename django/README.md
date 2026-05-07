@@ -327,6 +327,16 @@ docker compose -f docker-compose.dev.yml up -d
 
 Add `website` to `FEATURES` in `cohiva/base_config.py` and copy `website_example` to `website` (or create a new app `website`).
 
+### Reverse Roulette donation auto-link (optional)
+
+The cooperative can automatically book Reverse Roulette charity donations
+as member shares.  Add `reverse_roulette` to `FEATURES` in
+`cohiva/base_config.py`, then configure the keys listed in
+`reverse_roulette/README.md` (Supabase URL + service role key, configured
+charity wallet, dedicated `ShareType` PK, etc.) and run
+`python manage.py migrate reverse_roulette`.  A Celery beat task pulls
+new confirmed donations every 5 minutes.
+
 # Development
 
 ## Manage dependencies

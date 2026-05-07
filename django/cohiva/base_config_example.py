@@ -45,4 +45,6 @@ FEATURES = [
     "credit_accounting",  # currently required by geno
     "website",
     "cms",  # currently required by portal
+    # "reverse_roulette",  # uncomment to auto-link Reverse Roulette donations
+    #                      to member shares (see reverse_roulette/README.md)
 ]

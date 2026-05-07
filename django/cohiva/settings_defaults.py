@@ -275,6 +275,9 @@ if "report" in cbc.FEATURES:
 if "importer" in cbc.FEATURES:
     INSTALLED_APPS += ("importer",)
 
+if "reverse_roulette" in cbc.FEATURES:
+    INSTALLED_APPS += ("reverse_roulette",)
+
 MIDDLEWARE = ()
 if "portal" in cbc.FEATURES:
     MIDDLEWARE += (
@@ -1448,3 +1451,40 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = ["unfold_crispy"]
 # Theme Customization
 COHIVA_TITLE_FONT = "Lato"
 COHIVA_TEXT_FONT = "Liberation Serif"
+
+
+########################################################################
+# Reverse Roulette ? Cohiva member-share auto-link integration
+# Pulls confirmed donations from Supabase, matches phone ? Member,
+# books a dedicated ShareType.  Activate by adding 'reverse_roulette'
+# to FEATURES in cohiva_base_config.
+########################################################################
+REVERSE_ROULETTE_SUPABASE_URL = ''
+REVERSE_ROULETTE_SUPABASE_SERVICE_ROLE_KEY = ''
+REVERSE_ROULETTE_COHIVA_CHARITY_ADDRESS = ''
+# Map of contract address (lowercased 0x...) -> ERC-20 decimals.
+# Native RON contract ? 18; USDC contract ? 6.
+REVERSE_ROULETTE_TOKEN_DECIMALS = {}
+REVERSE_ROULETTE_DEFAULT_DECIMALS = 18
+# Number of block confirmations required before a donation is processed.
+REVERSE_ROULETTE_MIN_CONFIRMATIONS = 12
+# PK of the geno.ShareType used for these donations (create one in admin).
+REVERSE_ROULETTE_SHARETYPE_ID = None
+# Optional: PK of a geno.MemberAttributeType used to keep historic phone
+# numbers (so the matcher can find members by an old number too).
+REVERSE_ROULETTE_HISTORIC_PHONE_ATTR_ID = None
+# Off by default; flip on once the income/equity account prefixes are set.
+REVERSE_ROULETTE_ENABLE_ACCOUNTING_BOOKING = False
+REVERSE_ROULETTE_INCOME_ACCOUNT_PREFIX = ''
+REVERSE_ROULETTE_EQUITY_ACCOUNT_PREFIX = ''
+
+# Periodic Celery schedule for the Reverse Roulette poll.
+if 'reverse_roulette' in cbc.FEATURES:
+    try:
+        CELERY_BEAT_SCHEDULE  # type: ignore[name-defined]
+    except NameError:
+        CELERY_BEAT_SCHEDULE = {}
+    CELERY_BEAT_SCHEDULE['reverse-roulette-sync'] = {
+        'task': 'reverse_roulette.sync_donations',
+        'schedule': 5 * 60,  # every 5 minutes
+    }
